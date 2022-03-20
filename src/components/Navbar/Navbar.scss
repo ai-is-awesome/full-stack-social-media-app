@@ -1,0 +1,31 @@
+@use "../../scss_styles/abstracts/variables" as v;
+
+.navbar_container {
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 0.5px solid lightgray;
+
+  .brand_name {
+    font-size: 2rem;
+    font-weight: bold;
+    opacity: 0.8;
+    color: v.$primary-color-1;
+    font-family: "Barlow";
+    letter-spacing: 0.5rem;
+  }
+
+  .login_or_signup_btn {
+    border: none;
+    background-color: white;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border: 1px solid v.$primary-color-1;
+    background-color: v.$primary-color-1;
+    color: white;
+    border-radius: 0rem;
+  }
+}
