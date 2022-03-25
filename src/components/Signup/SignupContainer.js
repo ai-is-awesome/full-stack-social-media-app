@@ -1,11 +1,9 @@
-import React, { useState, useContext } from "react";
-import "./LoginModal.scss";
-import Modal from "../Modal/Modal";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
-export default function LoginModal({ showModal, onClose }) {
+export default function SignupContainer({}) {
   // Use userinput hook for later on plz
-  const { user, signup, logout } = useContext(AuthContext);
+  const { signup } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,20 +12,24 @@ export default function LoginModal({ showModal, onClose }) {
     signup(email, password);
     e.preventDefault();
   };
+
   return (
-    <Modal showModal={showModal} onClose={onClose}>
-      <div>
-        <form onSubmit={(e) => formSubmitHandler(e)}>
-          <div className="login_fields">
-            <label>
-              <div>Login</div>
+    <div>
+      <form onSubmit={(e) => formSubmitHandler(e)}>
+        <div className="login_fields">
+          <label>
+            <div className="input_container">
+              <div>Email</div>
               <input
                 type={"text"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </label>
-            <label>
+            </div>
+          </label>
+
+          <label>
+            <div className="input_container">
               <div>Password</div>
 
               <input
@@ -35,11 +37,11 @@ export default function LoginModal({ showModal, onClose }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </label>
-          </div>
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    </Modal>
+            </div>
+          </label>
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
   );
 }

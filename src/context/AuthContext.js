@@ -38,7 +38,7 @@ export function AuthProvider({ children }) {
   }
 
   function login(email, password) {
-    signInWithEmailAndPassword(email, password);
+    signInWithEmailAndPassword(auth, email, password);
   }
 
   onAuthStateChanged(auth, (user) => {
@@ -53,7 +53,7 @@ export function AuthProvider({ children }) {
   return (
     <>
       <AuthContext.Provider
-        value={{ loginWithEmail, user, logout, signup, authReady }}
+        value={{ loginWithEmail, user, logout, signup, authReady, login }}
       >
         {children}
       </AuthContext.Provider>

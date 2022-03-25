@@ -1,17 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "../src/scss_styles/main.scss";
 import App from "./App";
+import Onboard from "./components/Onboard/Onboard";
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
+import { UserDataProvider, UserProvider } from "./context/UserContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider>
+        <AuthProvider>
+          <UserDataProvider>
+            <Routes>
+              <Route path="/" element={<App />}></Route>
+              <Route path="onboard" element={<Onboard />}></Route>
+            </Routes>
+          </UserDataProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 
   document.getElementById("root")

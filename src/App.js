@@ -5,7 +5,6 @@ import { ThemeContext } from "./context/ThemeContext";
 import Navbar from "./components/Navbar/Navbar";
 import Post from "./components/Post/Post";
 import Modal from "./components/Modal/Modal";
-import LoginModal from "./components/LoginModal/LoginModal";
 
 // import { ThemeContext, ThemeProvider } from "./context/ThemeContext";
 

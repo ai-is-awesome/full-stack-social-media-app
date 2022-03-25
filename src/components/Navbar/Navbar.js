@@ -1,17 +1,23 @@
 import React, { useContext, useState } from "react";
 import "./Navbar.scss";
 import { AuthContext } from "../../context/AuthContext";
-import LoginModal from "../LoginModal/LoginModal";
+import AuthModal from "../AuthModal/AuthModal";
+import { UserContext } from "../../context/UserContext";
 
 export default function Navbar() {
   const { user, loginWithEmail, logout } = useContext(AuthContext);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const { userData } = useContext(UserContext);
 
   console.log(user);
   return (
     <nav className="navbar_container">
       <div>
-        USER : <code>{user === null ? "NO USER" : user.email}</code>
+        USER :{" "}
+        <code>
+          {user === null ? "Not logged in" : `${user.email}, ${user.uid}`}{" "}
+          {userData && userData.fullName}
+        </code>
       </div>
       <div className="brand_name">SOCIAL MEDIA APP</div>
       {!user ? (
@@ -22,9 +28,11 @@ export default function Navbar() {
           Login / Signup
         </button>
       ) : (
-        <button onClick={() => logout()}>Logout</button>
+        <button onClick={() => logout()} className="logout-btn">
+          Logout
+        </button>
       )}
-      <LoginModal
+      <AuthModal
         showModal={showLoginModal}
         onClose={() => setShowLoginModal(false)}
       />
