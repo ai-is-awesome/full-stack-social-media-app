@@ -9,13 +9,13 @@ export default function Navbar() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const { userData } = useContext(UserContext);
 
-  console.log(user);
   return (
     <nav className="navbar_container">
       <div>
         USER :{" "}
         <code>
-          {user === null ? "Not logged in" : `${user.email}, ${user.uid}`}{" "}
+          {user === null ? "Not logged in" : `${user.email}`}
+          {"  "}
           {userData && userData.fullName}
         </code>
       </div>

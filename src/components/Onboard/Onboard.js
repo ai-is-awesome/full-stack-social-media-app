@@ -5,18 +5,26 @@ import TextInput from "../ResuableComponents/TextInput/TextInput";
 import Navbar from "../Navbar/Navbar";
 import { addUserInfo } from "../../services/userRegister";
 import { AuthContext } from "../../context/AuthContext";
+import { fetchUserData } from "../../services/getUserData";
+import { UserContext } from "../../context/UserContext";
 
 export default function Onboard() {
   const { value, onChange } = useTextInput("");
   const { user } = useContext(AuthContext);
+  const { setUserData } = useContext(UserContext);
   const onFormSubmit = (e) => {
     e.preventDefault();
     if (user) {
       addUserInfo({ fullName: value }, user.uid).then((res) =>
-        console.log(res)
+        fetchUserData(user.uid).then((doc) => {
+          console.log("doc: ", doc);
+          console.log(setUserData);
+          setUserData(doc);
+        })
       );
     }
   };
+
   return (
     <>
       <Navbar />
