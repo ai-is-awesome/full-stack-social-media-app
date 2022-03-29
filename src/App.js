@@ -1,17 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./reset.css";
 import "./App.css";
-import { ThemeContext } from "./context/ThemeContext";
+
 import Navbar from "./components/Navbar/Navbar";
 import Post from "./components/Post/Post";
-import Modal from "./components/Modal/Modal";
+import Sidebar from "./components/Sidebar/Sidebar";
+import { AuthContext } from "./context/AuthContext";
+import SunSVG from "./components/ResuableComponents/SunSVG";
+import { postsFetch } from "./services/postsFetch";
 
 // import { ThemeContext, ThemeProvider } from "./context/ThemeContext";
 
 export default function App() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const [modal, setModal] = useState(false);
-  console.log(theme);
+  const { user } = useContext(AuthContext);
+  useEffect(() => {
+    postsFetch();
+  }, []);
   return (
     <>
       <Navbar />
@@ -19,11 +23,20 @@ export default function App() {
         <button onClick={toggleTheme}>Click to toggle theme!</button>
         Theme is : {theme === false ? "FALSE" : "TRUE"}
       </div> */}
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+
+      <div className="home_container">
+        <div className="sun_svg">
+          <SunSVG />
+        </div>
+        {user && <Sidebar />}
+        <div className="posts">
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+        </div>
+      </div>
     </>
   );
 }

@@ -6,7 +6,7 @@ import App from "./App";
 import Onboard from "./components/Onboard/Onboard";
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
-import { UserDataProvider, UserProvider } from "./context/UserContext";
+import { UserDataProvider } from "./context/UserContext";
 
 ReactDOM.render(
   <React.StrictMode>

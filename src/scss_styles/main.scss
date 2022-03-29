@@ -1,5 +1,9 @@
 @use "./abstracts/variables" as v;
 
 body {
-  background-color: v.$gray-200;
+  // background-color: v.$gray-200;
+}
+
+a {
+  text-decoration: none;
 }

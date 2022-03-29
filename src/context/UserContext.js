@@ -11,6 +11,7 @@ export function UserDataProvider({ children }) {
   let navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
+  console.log(setLoadingUserData);
   useEffect(() => {
     const fun = async () => {
       if (user) {

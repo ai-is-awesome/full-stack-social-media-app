@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
-export default function SignupContainer({}) {
+export default function SignupContainer() {
   // Use userinput hook for later on plz
   const { signup } = useContext(AuthContext);
   const [email, setEmail] = useState("");

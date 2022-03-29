@@ -7,6 +7,7 @@
   flex-direction: row;
   justify-content: space-between;
   border-bottom: 0.5px solid lightgray;
+  margin-bottom: 2rem;
 
   .brand_name {
     font-size: 2rem;
@@ -30,7 +31,12 @@
   }
   .logout-btn {
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     cursor: pointer;
+    background-color: v.$red-500;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    color: white;
+    min-width: 4rem;
   }
 }

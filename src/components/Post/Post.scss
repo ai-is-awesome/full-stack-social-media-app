@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
+  // margin-top: 2rem;
 
   .upvote_container {
     width: 20px;
@@ -23,9 +23,10 @@
   padding: 2rem;
   background-color: white;
   width: 30%;
+  border: solid 1px rgba(0, 0, 0, 0.1);
 
   // border: 2px solid pink;
-  border-radius: 10px;
+  // border-radius: 10px;
   line-height: 1.5;
   /* max-height: 80vh; */
 }
@@ -96,7 +97,7 @@
   height: 400px;
   width: auto;
   object-fit: cover;
-  border-radius: 10px;
+  // border-radius: 10px;
   /* border-radius: 10px; */
 }
 

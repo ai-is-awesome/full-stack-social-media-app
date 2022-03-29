@@ -3,6 +3,7 @@ import "./Navbar.scss";
 import { AuthContext } from "../../context/AuthContext";
 import AuthModal from "../AuthModal/AuthModal";
 import { UserContext } from "../../context/UserContext";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const { user, loginWithEmail, logout } = useContext(AuthContext);
@@ -19,7 +20,10 @@ export default function Navbar() {
           {userData && userData.fullName}
         </code>
       </div>
-      <div className="brand_name">SOCIAL MEDIA APP</div>
+      <Link className="brand_name" to={"/"}>
+        SOCIAL MEDIA APP
+      </Link>
+      {/* <a className="brand_name"></a> */}
       {!user ? (
         <button
           className="login_or_signup_btn"

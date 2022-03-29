@@ -28,4 +28,14 @@
   .onboard_form {
     margin-top: 2.5rem;
   }
+
+  .sun_svg {
+    color: pink;
+    > * {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: blue;
+    }
+  }
 }

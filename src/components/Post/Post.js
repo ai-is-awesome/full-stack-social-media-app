@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { BsHeart } from "react-icons/bs";
 import { BiCommentDetail } from "react-icons/bi";
 
 import "./Post.scss";
-import { AuthContext } from "../../context/AuthContext";
 
 export default function Post({
   profilePicUrl,
@@ -13,7 +12,6 @@ export default function Post({
   postDescription,
   likeCount,
 }) {
-  const { user } = useContext(AuthContext);
   return (
     <div className="post-main-container">
       <div className="post-container">
