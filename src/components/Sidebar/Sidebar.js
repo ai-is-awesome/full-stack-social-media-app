@@ -1,11 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { UserContext } from "../../context/UserContext";
+import QuickPost from "../QuickPost/QuickPost";
 import SunSVG from "../ResuableComponents/SunSVG";
+import Button from "../ResuableComponents/TextInput/Button";
 import "./Sidebar.scss";
 
 export default function Sidebar() {
   const { userData } = useContext(UserContext);
+  const [showQuickPost, setShowQuickPost] = useState(false);
+
+  const toggleShowQuickPost = () => {
+    setShowQuickPost((p) => !p);
+  };
   return (
     <div className="sidebar_container">
       <div className="sidebar_profile">
@@ -18,11 +25,22 @@ export default function Sidebar() {
           <p className="name">{userData ? userData.fullName : " "}</p>
         </div>
       </div>
-      <button className="create_post">Create Post</button>
-
-      <div className="sidebar_recent_posts_container">
-        <p className="title">Your Recent Posts</p>
-      </div>
+      {/* Conditional create post, only show when showCraetePost is false */}
+      {!showQuickPost && (
+        <button
+          className="create_post"
+          onClick={() => setShowQuickPost((p) => !p)}
+        >
+          Create Post
+        </button>
+      )}
+      {/* Show / hide quick post */}
+      {showQuickPost && <QuickPost onCancel={toggleShowQuickPost} />}
+      {!showQuickPost && (
+        <div className="sidebar_recent_posts_container">
+          <p className="title">Your Recent Posts</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -13,9 +13,11 @@ import { postsFetch } from "./services/postsFetch";
 
 export default function App() {
   const { user } = useContext(AuthContext);
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
-    postsFetch();
+    postsFetch(setPosts);
   }, []);
+  console.log("posts : ", posts);
   return (
     <>
       <Navbar />
@@ -30,6 +32,13 @@ export default function App() {
         </div>
         {user && <Sidebar />}
         <div className="posts">
+          {posts.map((post) => (
+            <Post
+              imageUrl={post.imageUrl}
+              title={post.title}
+              profileName={post?.authorFullName}
+            />
+          ))}
           <Post />
           <Post />
           <Post />

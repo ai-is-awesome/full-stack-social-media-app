@@ -1,0 +1,5 @@
+@use "../../../scss_styles/abstracts/mixins" as m;
+
+.btn_comp {
+  @include m.btn_primary;
+}

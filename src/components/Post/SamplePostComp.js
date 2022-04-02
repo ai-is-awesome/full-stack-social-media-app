@@ -7,11 +7,8 @@ import "./Post.scss";
 export default function Post({
   profilePicUrl,
   name,
-  profileName,
   postedtime,
   postImage,
-  imageUrl,
-  title,
   postDescription,
   likeCount,
 }) {
@@ -27,15 +24,23 @@ export default function Post({
               />
             </div>
             <div className="post-details-container">
-              <div className="full-name">{profileName}</div>
+              <div className="full-name">Laura Fisher</div>
               <div className="time-posted">12 Hours Ago</div>
             </div>
           </div>
           <div className="dot-icon">...</div>
         </div>
-        <div className="title">{title}</div>
+        <div className="description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quasi
+          magni, officiis, nisi, ducimus at omnis esse odit in corporis amet
+          illo provident asperiores autem ut? Omnis recusandae nesciunt
+          voluptatibus?
+        </div>
         <div className="post-image">
-          <img alt="profile-img" src={imageUrl} />
+          <img
+            alt="profile-img"
+            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80"
+          />
         </div>
         <div className="reaction-container">
           <div className="upvote_container">
