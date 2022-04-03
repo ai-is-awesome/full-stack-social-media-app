@@ -17,7 +17,7 @@ export default function App() {
   useEffect(() => {
     postsFetch(setPosts);
   }, []);
-  console.log("posts : ", posts);
+
   return (
     <>
       <Navbar />
