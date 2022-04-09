@@ -1,5 +1,15 @@
 @use "../../../scss_styles/abstracts/mixins" as m;
+@use "../../../scss_styles/abstracts/variables" as v;
 
 .btn_comp {
   @include m.btn_primary;
+}
+
+.btn_comp:disabled {
+  opacity: 0.1;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  background-color: v.$red-500;
 }

@@ -1,3 +1,5 @@
+@use "../../scss_styles/abstracts/mixins" as m;
+
 .post-main-container {
   width: 100%;
   display: flex;
@@ -17,6 +19,13 @@
     opacity: 0.8;
     width: 300px;
     height: auto;
+  }
+
+  @include m.small {
+    .post-container {
+      width: 90%;
+      padding: 1rem;
+    }
   }
 }
 

@@ -12,16 +12,9 @@ export default function Navbar() {
 
   return (
     <nav className="navbar_container">
-      <div>
-        USER :{" "}
-        <code>
-          {user === null ? "Not logged in" : `${user.email}`}
-          {"  "}
-          {userData && userData.fullName}
-        </code>
-      </div>
+      <div>{userData && `Welcome ${userData.fullName}!`}</div>
       <Link className="brand_name" to={"/"}>
-        SOCIAL MEDIA APP
+        BUZZTALK
       </Link>
       {/* <a className="brand_name"></a> */}
       {!user ? (

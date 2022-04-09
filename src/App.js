@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./reset.css";
-import "./App.css";
+import "./App.scss";
 
 import Navbar from "./components/Navbar/Navbar";
 import Post from "./components/Post/Post";
@@ -39,11 +39,6 @@ export default function App() {
               profileName={post?.authorFullName}
             />
           ))}
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
         </div>
       </div>
     </>

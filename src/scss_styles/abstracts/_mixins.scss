@@ -8,4 +8,14 @@
   border: 1px solid v.$primary-color-1;
   background-color: v.$primary-color-1;
   color: white;
+
+  :disabled {
+    opacity: 0.2;
+  }
+}
+
+@mixin small {
+  @media (max-width: 899px) {
+    @content;
+  }
 }

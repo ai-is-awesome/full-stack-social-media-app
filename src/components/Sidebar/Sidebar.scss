@@ -1,4 +1,5 @@
 @use "../../scss_styles/abstracts/mixins" as m;
+@use "../../scss_styles/abstracts/variables" as v;
 
 .sidebar_container {
   //   background-color: gray;
@@ -6,6 +7,8 @@
   max-width: 15vw;
   position: absolute;
   min-height: 70vh;
+
+  box-shadow: v.$shadow-lg;
 
   .sidebar_profile {
     display: flex;
@@ -36,6 +39,19 @@
   .sidebar_recent_posts_container {
     .title {
       font-size: 1.5rem;
+    }
+  }
+
+  @include m.small {
+    position: relative;
+    width: 80%;
+    max-height: none;
+    min-height: 10vh;
+    max-width: none;
+    box-shadow: none;
+
+    .title {
+      display: none;
     }
   }
 }
