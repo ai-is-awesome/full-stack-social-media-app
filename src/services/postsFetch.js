@@ -5,7 +5,7 @@ export const postsFetch = async (setPosts) => {
   const q = query(
     collection(db, "posts"),
     orderBy("timeCreated", "desc"),
-    limit(1)
+    limit(10)
   );
   const querySnapshot = await getDocs(q);
 
