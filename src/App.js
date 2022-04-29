@@ -14,8 +14,12 @@ import { postsFetch } from "./services/postsFetch";
 export default function App() {
   const { user } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
+  if (posts.length) {
+    console.log("posts: ", posts[0]["userRef"]["path"]);
+  }
   useEffect(() => {
     postsFetch(setPosts);
+    // console.log("posts: ", posts);
   }, []);
 
   return (
@@ -27,9 +31,9 @@ export default function App() {
       </div> */}
 
       <div className="home_container">
-        <div className="sun_svg">
+        {/* <div className="sun_svg">
           <SunSVG />
-        </div>
+        </div> */}
         {user && <Sidebar />}
         <div className="posts">
           {posts.map((post) => (
@@ -37,6 +41,8 @@ export default function App() {
               imageUrl={post.imageUrl}
               title={post.title}
               profileName={post?.authorFullName}
+              profilePicUrl={post?.posterProfilePicURL}
+              userRef={post?.userRef}
             />
           ))}
         </div>

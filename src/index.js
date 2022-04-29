@@ -3,8 +3,10 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "../src/scss_styles/main.scss";
 import App from "./App";
+import Navbar from "./components/Navbar/Navbar";
 import Onboard from "./components/Onboard/Onboard";
 import Loading from "./components/ResuableComponents/Loading/Loading";
+import UserProfile from "./components/UserProfile/UserProfile";
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { UserDataProvider } from "./context/UserContext";
@@ -19,6 +21,7 @@ ReactDOM.render(
               <Route path="/" element={<App />}></Route>
               <Route path="onboard" element={<Onboard />}></Route>
               <Route path="loading" element={<Loading />}></Route>
+              <Route path="profile/:userId" element={<UserProfile />}></Route>
             </Routes>
           </UserDataProvider>
         </AuthProvider>

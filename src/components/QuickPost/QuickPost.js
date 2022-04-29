@@ -16,9 +16,9 @@ export default function QuickPost({ onCancel }) {
   const [uploadStatus, setUploadStatus] = useState("notInitialized");
   const [downloadURL, setDownloadURL] = useState(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const { value, onChange } = useTextInput("");
+  console.log("user data: ", userData);
 
   const fileChangeHandler = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -31,11 +31,12 @@ export default function QuickPost({ onCancel }) {
     setLoading(true);
 
     // create image post once upload is done
+
     const postObject = {
       imageUrl: downloadURL,
       title: value,
-      posterProfilePicURL: userData.profilePictureURL
-        ? userData.profilePictureURL
+      posterProfilePicURL: userData.profilePicURL
+        ? userData.profilePicURL
         : null,
       authorFullName: userData.fullName,
     };

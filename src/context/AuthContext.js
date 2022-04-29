@@ -14,6 +14,7 @@ export const AuthContext = React.createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [authReady, setAuthReady] = useState(false);
+  const [authError, setAuthError] = useState("");
 
   const cred = { email: "test", password: "test", firstName: "Sunil" };
 
@@ -24,12 +25,16 @@ export function AuthProvider({ children }) {
   }
 
   function signup(email, password) {
-    createUserWithEmailAndPassword(auth, email, password).then(
-      (userCredential) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
         setUser(userCredential.user);
         console.log("user is SET!");
-      }
-    );
+        setAuthError("");
+      })
+      .catch((e) => {
+        setAuthError(e.message);
+        console.log("err", e, "code", e.code, "msg", e.message, "name", e.name);
+      });
   }
 
   function logout() {
@@ -38,7 +43,7 @@ export function AuthProvider({ children }) {
   }
 
   function login(email, password) {
-    signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password);
   }
 
   onAuthStateChanged(auth, (user) => {
@@ -53,7 +58,16 @@ export function AuthProvider({ children }) {
   return (
     <>
       <AuthContext.Provider
-        value={{ loginWithEmail, user, logout, signup, authReady, login }}
+        value={{
+          loginWithEmail,
+          user,
+          logout,
+          signup,
+          authReady,
+          login,
+          authError,
+          setAuthError,
+        }}
       >
         {children}
       </AuthContext.Provider>

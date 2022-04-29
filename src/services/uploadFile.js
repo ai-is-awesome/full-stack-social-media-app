@@ -13,7 +13,6 @@ const uploadFile = (file) => {
     if (!file) {
       reject("No file Found");
     }
-
     const fileName = file.name;
     const storageRef = ref(storage, `${storageFolder}/${fileName}`);
     const uploadTask = uploadBytesResumable(storageRef, file);

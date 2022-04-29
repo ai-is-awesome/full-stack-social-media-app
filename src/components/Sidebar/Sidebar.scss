@@ -2,13 +2,13 @@
 @use "../../scss_styles/abstracts/variables" as v;
 
 .sidebar_container {
-  //   background-color: gray;
+  background-color: white;
   padding: 3rem;
   max-width: 15vw;
   position: absolute;
   min-height: 70vh;
 
-  box-shadow: v.$shadow-lg;
+  // box-shadow: v.$shadow-lg;
 
   .sidebar_profile {
     display: flex;

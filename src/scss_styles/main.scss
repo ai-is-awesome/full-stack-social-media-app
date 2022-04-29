@@ -1,9 +1,20 @@
 @use "./abstracts/variables" as v;
 
 body {
-  // background-color: v.$gray-200;
+  background-color: v.$gray-100;
 }
 
 a {
   text-decoration: none;
+
+  :visited {
+    text-decoration: none;
+    color: black;
+  }
+  :link {
+    color: black;
+  }
+  :active {
+    color: black;
+  }
 }

@@ -40,7 +40,9 @@ export default function SignupContainer() {
             </div>
           </label>
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="btn_login">
+          Sign Up
+        </button>
       </form>
     </div>
   );

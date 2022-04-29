@@ -6,6 +6,6 @@ export const fetchUserData = async (ID) => {
   if (docSnap.exists()) {
     return docSnap.data();
   } else {
-    return null;
+    throw new Error("No user found");
   }
 };

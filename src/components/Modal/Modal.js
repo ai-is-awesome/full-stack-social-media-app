@@ -7,7 +7,7 @@ export default function Modal({ size, showModal, children, onClose }) {
       {showModal ? (
         <div className="model_container">
           <button className="modal_close_btn" onClick={onClose}>
-            CLOSE
+            X
           </button>
           {children}
         </div>

@@ -3,11 +3,14 @@ import { BsHeart } from "react-icons/bs";
 import { BiCommentDetail } from "react-icons/bi";
 
 import "./Post.scss";
+import { getIdFromPath } from "../../utils";
+import { Link } from "react-router-dom";
 
 export default function Post({
   profilePicUrl,
   name,
   profileName,
+  userRef,
   postedtime,
   postImage,
   imageUrl,
@@ -15,6 +18,8 @@ export default function Post({
   postDescription,
   likeCount,
 }) {
+  const profileHREF = `/profile/${getIdFromPath(userRef["path"])}`;
+  console.log(profileHREF);
   return (
     <div className="post-main-container">
       <div className="post-container">
@@ -22,12 +27,18 @@ export default function Post({
           <div className="profile-details">
             <div className="img-icon">
               <img
-                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                src={
+                  profilePicUrl
+                    ? profilePicUrl
+                    : "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                }
                 alt=""
               />
             </div>
             <div className="post-details-container">
-              <div className="full-name">{profileName}</div>
+              <Link to={profileHREF} className="full-name">
+                {profileName}
+              </Link>
               <div className="time-posted">12 Hours Ago</div>
             </div>
           </div>

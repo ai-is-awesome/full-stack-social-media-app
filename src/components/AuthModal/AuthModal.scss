@@ -27,4 +27,16 @@
       }
     }
   }
+
+  .auth_error_message {
+    color: red;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    border-radius: 0.4rem;
+    width: 50%;
+    background-color: v.$red-400;
+    color: white;
+  }
 }

@@ -6,7 +6,8 @@ import { UserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
-  const { user, loginWithEmail, logout } = useContext(AuthContext);
+  const { user, loginWithEmail, logout, setAuthError } =
+    useContext(AuthContext);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const { userData } = useContext(UserContext);
 
@@ -32,6 +33,11 @@ export default function Navbar() {
       <AuthModal
         showModal={showLoginModal}
         onClose={() => setShowLoginModal(false)}
+        // Close the modal on successful authentication
+        onAuthSuccess={() => {
+          setShowLoginModal(false);
+          setAuthError("");
+        }}
       />
     </nav>
   );

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "./LoginContainer.scss";
 import { AuthContext } from "../../context/AuthContext";
 
-export default function LoginContainer() {
+export default function LoginContainer({ onAuthSuccess }) {
   // Use userinput hook for later on plz
   const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
@@ -11,7 +11,9 @@ export default function LoginContainer() {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     console.log("submitted");
-    login(email, password);
+    login(email, password)
+      .then(() => onAuthSuccess())
+      .catch((e) => console.log("loogigng", e));
   };
 
   return (
@@ -32,7 +34,6 @@ export default function LoginContainer() {
           <label>
             <div className="input_container">
               <div>Password</div>
-
               <input
                 type={"password"}
                 value={password}

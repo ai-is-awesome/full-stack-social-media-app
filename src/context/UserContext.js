@@ -17,9 +17,11 @@ export function UserDataProvider({ children }) {
       if (user) {
         const results = await fetchUserData(user.uid);
         if (results) {
+          console.log("found user: ", results);
           setUserData(results);
         } else {
           navigate("onboard");
+          console.log("not found : ", "navigating");
         }
       } else {
         setUserData(null);
