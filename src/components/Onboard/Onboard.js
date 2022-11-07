@@ -21,13 +21,16 @@ export default function Onboard() {
   const onFormSubmit = (e) => {
     e.preventDefault();
     if (user) {
+      let userObject = {
+        fullName: value,
+        email: user.email,
+        firebaseUID: user.uid,
+      };
       if (selectedFile) {
         uploadFileFun(selectedFile).then((downloadUrl) => {
           console.log("download url: ", downloadUrl);
-          addUserInfo(
-            { fullName: value, email: user.email, profilePicURL: downloadUrl },
-            user.uid
-          ).then((res) =>
+          userObject.profilePicURL = downloadUrl;
+          addUserInfo(userObject, user.uid).then((res) =>
             fetchUserData(user.uid).then((doc) => {
               console.log("doc: ", doc);
               console.log(setUserData);
@@ -35,6 +38,16 @@ export default function Onboard() {
               navigate("/");
             })
           );
+        });
+      } else {
+        console.log("user uid", user.uid);
+        addUserInfo(userObject, user.uid).then((res) => {
+          fetchUserData(user.uid).then((doc) => {
+            console.log("doc: ", doc);
+            console.log(setUserData);
+            setUserData(doc);
+            navigate("/");
+          });
         });
       }
     }
@@ -56,7 +69,7 @@ export default function Onboard() {
               label={"Enter your full name"}
             />
             <button type="submit">Submit</button>
-            {String(loading)}
+            {loading && "Uploading Files..."}
           </form>
         </div>
       </div>

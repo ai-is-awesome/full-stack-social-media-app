@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { UserContext } from "../../context/UserContext";
+import { getUserProfilePageURL } from "../../utils";
 import QuickPost from "../QuickPost/QuickPost";
 import SunSVG from "../ResuableComponents/SunSVG";
 import Button from "../ResuableComponents/TextInput/Button";
@@ -8,6 +10,7 @@ import "./Sidebar.scss";
 
 export default function Sidebar() {
   const { userData } = useContext(UserContext);
+  console.log("user data", userData);
   const [showQuickPost, setShowQuickPost] = useState(false);
 
   const toggleShowQuickPost = () => {
@@ -21,12 +24,18 @@ export default function Sidebar() {
           src={
             userData?.profilePicURL
               ? userData.profilePicURL
-              : "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+              : "https://firebasestorage.googleapis.com/v0/b/socialmediaapp-59ba2.appspot.com/o/imagePosts%2Fman.png?alt=media&token=046ec377-5c0a-4b6b-b14b-67b2081d4be0"
           }
         ></img>
         <div className="greeting_container">
           <p className="greeting">Welcome Back</p>
-          <p className="name">{userData ? userData.fullName : " "}</p>
+
+          <Link
+            className="name"
+            to={userData ? getUserProfilePageURL(userData.firebaseUID) : "/"}
+          >
+            {userData ? userData.fullName : " "}
+          </Link>
         </div>
       </div>
       {/* Conditional create post, only show when showCraetePost is false */}

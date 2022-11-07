@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "../src/scss_styles/main.scss";
 import App from "./App";
+import ActiveUsers from "./components/ActiveUsers/ActiveUsers";
 import Navbar from "./components/Navbar/Navbar";
 import Onboard from "./components/Onboard/Onboard";
 import Loading from "./components/ResuableComponents/Loading/Loading";
@@ -22,6 +23,7 @@ ReactDOM.render(
               <Route path="onboard" element={<Onboard />}></Route>
               <Route path="loading" element={<Loading />}></Route>
               <Route path="profile/:userId" element={<UserProfile />}></Route>
+              <Route path="temp" element={<ActiveUsers />}></Route>
             </Routes>
           </UserDataProvider>
         </AuthProvider>

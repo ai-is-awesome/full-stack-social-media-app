@@ -8,7 +8,6 @@ import { AuthContext } from "../../context/AuthContext";
 export default function AuthModal(props) {
   const [activeAuth, setActiveAuth] = useState("login");
   const { authError } = useContext(AuthContext);
-  console.log("aut herror", authError);
   return (
     <Modal {...props}>
       <div className={`auth_modal_container`}>

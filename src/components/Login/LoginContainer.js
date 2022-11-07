@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 export default function LoginContainer({ onAuthSuccess }) {
   // Use userinput hook for later on plz
-  const { login } = useContext(AuthContext);
+  const { login, setAuthError, authError } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,7 +13,7 @@ export default function LoginContainer({ onAuthSuccess }) {
     console.log("submitted");
     login(email, password)
       .then(() => onAuthSuccess())
-      .catch((e) => console.log("loogigng", e));
+      .catch((e) => setAuthError(e.message));
   };
 
   return (

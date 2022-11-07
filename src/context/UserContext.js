@@ -15,14 +15,11 @@ export function UserDataProvider({ children }) {
   useEffect(() => {
     const fun = async () => {
       if (user) {
-        const results = await fetchUserData(user.uid);
-        if (results) {
-          console.log("found user: ", results);
-          setUserData(results);
-        } else {
-          navigate("onboard");
-          console.log("not found : ", "navigating");
-        }
+        fetchUserData(user.uid)
+          .then((results) => {
+            setUserData(results);
+          })
+          .catch((e) => navigate("onboard"));
       } else {
         setUserData(null);
       }

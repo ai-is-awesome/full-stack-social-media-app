@@ -7,14 +7,19 @@ body {
 a {
   text-decoration: none;
 
-  :visited {
+  &:visited {
     text-decoration: none;
     color: black;
   }
-  :link {
+  &:link {
     color: black;
   }
-  :active {
+  &:active {
     color: black;
   }
 }
+
+// a:visited {
+//   text-decoration: none;
+//   color: orange;
+// }

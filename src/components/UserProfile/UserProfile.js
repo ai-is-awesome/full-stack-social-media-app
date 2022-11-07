@@ -14,13 +14,14 @@ import { fetchUserData } from "../../services/getUserData";
 import { fetchUserPosts } from "../../services/postsFetch";
 import Navbar from "../Navbar/Navbar";
 import Post from "../Post/Post";
+import Loading from "../ResuableComponents/Loading/Loading";
+import UserProfileDisplay from "./UserProfileDisplay";
 
 export default function UserProfile() {
   const { userId } = useParams();
   const [posts, setPosts] = useState([]);
   const [userData, setUserdata] = useState(null);
   const [invalidUser, setInvalidUser] = useState(false);
-  const testUserId = "kDW5PlpJxLXC0WTrq6AufXZmcDg1";
 
   // const fun = async (userId) => {
   //   const userRef = doc(db, "users", "kDW5PlpJxLXC0WTrq6AufXZmcDg1");
@@ -49,7 +50,7 @@ export default function UserProfile() {
     fetchUserData(userId)
       .then((data) => {
         console.log("user data: ", data);
-        setUserdata();
+        setUserdata(data);
       })
       .catch((e) => setInvalidUser(true));
   };
@@ -62,16 +63,25 @@ export default function UserProfile() {
 
   //   const snapshot = await getDocs(q )
 
-  if (!invalidUser) {
+  if (!invalidUser && userData !== null) {
     return (
       <>
         <Navbar />
-        UserProfile : {userId}
+        <UserProfileDisplay
+          name="UWU"
+          imageURL={posts.length ? posts[0].posterProfilePicURL : ""}
+        />
         {posts.map((post) => (
-          <Post {...post} profileName={post.authorFullName} />
+          <Post
+            {...post}
+            profileName={post.authorFullName}
+            profilePicUrl={post.posterProfilePicURL}
+          />
         ))}
       </>
     );
+  } else if (userData === null) {
+    return <Loading />;
   } else {
     return (
       <>

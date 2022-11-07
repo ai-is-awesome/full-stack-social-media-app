@@ -3,7 +3,7 @@ import { BsHeart } from "react-icons/bs";
 import { BiCommentDetail } from "react-icons/bi";
 
 import "./Post.scss";
-import { getIdFromPath } from "../../utils";
+import { getIdFromPath, getImageFallbackURL } from "../../utils";
 import { Link } from "react-router-dom";
 
 export default function Post({
@@ -18,8 +18,9 @@ export default function Post({
   postDescription,
   likeCount,
 }) {
+  console.log(profilePicUrl);
   const profileHREF = `/profile/${getIdFromPath(userRef["path"])}`;
-  console.log(profileHREF);
+  // console.log(profileHREF);
   return (
     <div className="post-main-container">
       <div className="post-container">
@@ -27,11 +28,7 @@ export default function Post({
           <div className="profile-details">
             <div className="img-icon">
               <img
-                src={
-                  profilePicUrl
-                    ? profilePicUrl
-                    : "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                }
+                src={profilePicUrl ? profilePicUrl : getImageFallbackURL()}
                 alt=""
               />
             </div>

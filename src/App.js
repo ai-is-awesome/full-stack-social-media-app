@@ -8,6 +8,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import { AuthContext } from "./context/AuthContext";
 import SunSVG from "./components/ResuableComponents/SunSVG";
 import { postsFetch } from "./services/postsFetch";
+import ActiveUsers from "./components/ActiveUsers/ActiveUsers";
 
 // import { ThemeContext, ThemeProvider } from "./context/ThemeContext";
 
@@ -46,6 +47,7 @@ export default function App() {
             />
           ))}
         </div>
+        <ActiveUsers />
       </div>
     </>
   );
