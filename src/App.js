@@ -30,24 +30,25 @@ export default function App() {
         <button onClick={toggleTheme}>Click to toggle theme!</button>
         Theme is : {theme === false ? "FALSE" : "TRUE"}
       </div> */}
-
-      <div className="home_container">
-        {/* <div className="sun_svg">
+      <div className="container">
+        <div className="home_container">
+          {/* <div className="sun_svg">
           <SunSVG />
         </div> */}
-        {user && <Sidebar />}
-        <div className="posts">
-          {posts.map((post) => (
-            <Post
-              imageUrl={post.imageUrl}
-              title={post.title}
-              profileName={post?.authorFullName}
-              profilePicUrl={post?.posterProfilePicURL}
-              userRef={post?.userRef}
-            />
-          ))}
+          <Sidebar />
+          <div className="posts">
+            {posts.map((post) => (
+              <Post
+                imageUrl={post.imageUrl}
+                title={post.title}
+                profileName={post?.authorFullName}
+                profilePicUrl={post?.posterProfilePicURL}
+                userRef={post?.userRef}
+              />
+            ))}
+          </div>
+          <ActiveUsers />
         </div>
-        <ActiveUsers />
       </div>
     </>
   );

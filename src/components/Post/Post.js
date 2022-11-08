@@ -47,10 +47,10 @@ export default function Post({
         </div>
         <div className="reaction-container">
           <div className="upvote_container">
-            <BsHeart />
+            <BsHeart id="heart_icon" className="icon" />
           </div>
           <div className="comment">
-            <BiCommentDetail />
+            <BiCommentDetail id="comment_icon" className="icon" />
           </div>
         </div>
       </div>

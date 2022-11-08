@@ -2,24 +2,35 @@
 @use "../../scss_styles/abstracts/variables" as v;
 
 .post-main-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  // width: 100%;
+
   margin-bottom: 2rem;
 
   .post-container {
     padding: 2rem;
     background-color: white;
     min-width: 30%;
-    width: 50%;
-    border-radius: v.$rounded;
+
+    // width: 50%;
+    border-radius: 1rem;
     // border: solid 2px rgba(0, 0, 0, 0.1);
     box-shadow: v.$shadow-lg;
     // border: 2px solid pink;
     // border-radius: 10px;
     line-height: 1.5;
     /* max-height: 80vh; */
+
+    .reaction-container {
+      // background-color: v.$gray-100;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      display: flex;
+      box-shadow: v.$shadow-sm;
+
+      .icon {
+        font-size: 1.2rem;
+      }
+    }
   }
 
   // margin-top: 2rem;
@@ -116,6 +127,7 @@ a.full-name {
   display: flex;
   justify-content: center;
   overflow: hidden;
+  border-radius: 1rem;
   /* background-color: lightblue; */
 }
 
@@ -123,18 +135,10 @@ a.full-name {
   // Fixed height, and full width maybe
   width: auto;
   height: 400px;
+  width: 100%;
   width: auto;
   object-fit: cover;
-  // border-radius: 10px;
-  /* border-radius: 10px; */
-}
-
-.reaction-container {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  display: flex;
-  // border: pink 1px solid;
-  box-shadow: v.$shadow-md;
+  border-radius: 1rem;
 }
 
 .reaction-container > * {

@@ -1,4 +1,5 @@
 @use "../../scss_styles/abstracts/mixins" as m;
+@use "../../scss_styles/abstracts/variables" as v;
 
 .model_container {
   position: fixed;
@@ -15,7 +16,7 @@
   width: 100px;
   min-height: 70vh;
   min-width: 30vw;
-  box-shadow: 10px 10px 8px black;
+  box-shadow: v.$shadow-lg;
 
   @include m.small {
     height: 50%;
@@ -29,11 +30,14 @@
     right: 0;
     top: 0;
     margin: 1rem;
-    background-color: white;
     border: 0px;
-    font-size: 1.5rem;
+    background-color: v.$gray-300;
+    color: white;
+    border-radius: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    color: gray;
+
+    font-weight: 800;
   }
 }

@@ -3,14 +3,15 @@
 
 .sidebar_container {
   background-color: white;
-  padding: 3rem;
-  margin-left: 2rem;
-  // max-width: 15vw;
-  width: 20vw;
-  // position: absolute;
-  min-height: 70vh;
+  padding: 2rem;
+  max-height: 70vh;
+  border-radius: 1rem;
 
-  // box-shadow: v.$shadow-lg;
+  .sidebar_item {
+    // background-color: blue;
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
 
   .sidebar_profile {
     display: flex;

@@ -1,7 +1,7 @@
 @use "../../scss_styles/abstracts/variables" as v;
 @use "../../scss_styles/abstracts/mixins" as m;
 
-.container {
+.ac__container {
   display: flex;
   // position: absolute;
   right: 2%;
@@ -13,6 +13,8 @@
   // height: 80vh;
   width: 30vw;
   margin-right: 2rem;
+  height: 70vh;
+  background-color: white;
   // margin: auto;
   // margin-top: 5rem;
   // padding: 3rem;
@@ -21,7 +23,7 @@
   .title {
     padding: 1rem;
     font-size: 1.5rem;
-    background-color: v.$gray-200;
+    // background-color: v.$gray-200;
   }
 
   .profile_container {

@@ -1,14 +1,34 @@
 @use "../../scss_styles/abstracts/variables" as v;
 
 .navbar_container {
-  background-color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 0.5px solid lightgray;
-  margin-bottom: 2rem;
+  .container {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .nav__search-bar {
+    padding: 1rem 1rem;
+    background-color: white;
+    border-radius: 2rem;
+    width: 40%;
+
+    input {
+      border-radius: 2rem;
+      margin-left: 1rem;
+      background-color: transparent;
+      width: 90%;
+      font-size: 1rem;
+      border: none;
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+  }
 
   .profile-icon-container {
     background-color: white;
@@ -54,21 +74,20 @@
 
   .brand_name {
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 800;
     opacity: 0.8;
-    color: v.$primary-color-1;
     font-family: "Barlow";
-    letter-spacing: 0.5rem;
   }
 
   .login_or_signup_btn {
     border: none;
     background-color: white;
-    padding: 0.5rem 0.75rem;
+    padding: 1rem 1.5rem;
+    border-radius: 6rem;
     cursor: pointer;
     font-size: 1rem;
     border: 1px solid v.$primary-color-1;
-    border-radius: v.$rounded-sm;
+
     background-color: v.$primary-color-1;
     color: white;
   }
