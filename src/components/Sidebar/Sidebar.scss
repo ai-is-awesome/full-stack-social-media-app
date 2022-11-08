@@ -3,14 +3,27 @@
 
 .sidebar_container {
   background-color: white;
-  padding: 2rem;
+  padding: 1rem;
   max-height: 70vh;
   border-radius: 1rem;
 
   .sidebar_item {
-    // background-color: blue;
-    width: 100%;
     padding: 1rem 1.5rem;
+    border-radius: 1rem;
+
+    span {
+      margin-left: 0.5rem;
+    }
+
+    &.active {
+      color: v.$primary-color-1;
+    }
+
+    &:hover {
+      background-color: v.$primary-color-1;
+      color: white;
+      cursor: pointer;
+    }
   }
 
   .sidebar_profile {

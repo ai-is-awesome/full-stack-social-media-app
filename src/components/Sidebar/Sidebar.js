@@ -1,24 +1,28 @@
 import React from "react";
 import "./Sidebar.scss";
 import { AiFillHome } from "react-icons/ai";
+import { AiOutlineLogin } from "react-icons/ai";
 import { IoCreateOutline } from "react-icons/io5";
 
 export default function Sidebar() {
   return (
     <div className="sidebar_container">
-      <div className="sidebar_item">
+      <div className="sidebar_item active">
         <AiFillHome />
-        Home
+        <span>Home</span>
       </div>
       <div className="sidebar_item">
         <IoCreateOutline />
-        Create Post
+        <span>Create Post</span>
       </div>
       <div className="sidebar_item">
         <IoCreateOutline />
-        Login or Signup!
+        <span>Create Post</span>
       </div>
-      <div className="sidebar_item">Home</div>
+      <div className="sidebar_item">
+        <AiOutlineLogin />
+        <span>Login</span>
+      </div>
     </div>
   );
 }
