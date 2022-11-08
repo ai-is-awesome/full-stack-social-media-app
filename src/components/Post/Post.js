@@ -1,6 +1,8 @@
 import React from "react";
 import { BsHeart } from "react-icons/bs";
+import { FaRegHeart } from "react-icons/fa";
 import { BiCommentDetail } from "react-icons/bi";
+import { BiTime } from "react-icons/bi";
 
 import "./Post.scss";
 import { getIdFromPath, getImageFallbackURL } from "../../utils";
@@ -36,7 +38,10 @@ export default function Post({
               <Link to={profileHREF} className="full-name">
                 {profileName}
               </Link>
-              <div className="time-posted">12 Hours Ago</div>
+              <div className="time-posted">
+                <BiTime />
+                <span>12 Hours Ago</span>
+              </div>
             </div>
           </div>
           <div className="dot-icon">...</div>
@@ -47,7 +52,7 @@ export default function Post({
         </div>
         <div className="reaction-container">
           <div className="upvote_container">
-            <BsHeart id="heart_icon" className="icon" />
+            <FaRegHeart id="heart_icon" className="icon" />
           </div>
           <div className="comment">
             <BiCommentDetail id="comment_icon" className="icon" />

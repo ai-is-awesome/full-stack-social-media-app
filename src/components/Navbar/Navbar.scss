@@ -1,8 +1,9 @@
 @use "../../scss_styles/abstracts/variables" as v;
 
 .navbar_container {
+  background-color: white;
   .container {
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -12,7 +13,7 @@
 
   .nav__search-bar {
     padding: 1rem 1rem;
-    background-color: white;
+    background-color: v.$gray-100;
     border-radius: 2rem;
     width: 40%;
 
@@ -47,7 +48,7 @@
     }
 
     .user_profile_pic_container {
-      // justify-content: center;
+      // jufy-content: center;
       // align-items: center;
       margin-right: 1rem;
 

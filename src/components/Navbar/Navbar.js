@@ -44,7 +44,7 @@ export default function Navbar() {
             >
               <div style={{ display: "flex", alignItems: "center" }}>
                 <p style={{ marginRight: "1rem" }} className="welcome-text">
-                  Welcome back {userData && userData.fullName}!
+                  Create Post
                 </p>
                 {userData?.profilePicURL ? (
                   <div className="user_profile_pic_container">
