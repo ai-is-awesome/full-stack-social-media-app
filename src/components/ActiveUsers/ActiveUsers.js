@@ -13,7 +13,7 @@ export default function ActiveUsers() {
   const imgUrl = getImageFallbackURL();
   return (
     <div className="ac__container">
-      <p className="title">Checkout these active profiles!</p>
+      <p className="title">Top profiles!</p>
       <div className="profile_container">
         {data.map((profileInfo) => {
           return (

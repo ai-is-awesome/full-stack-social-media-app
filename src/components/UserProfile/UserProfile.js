@@ -12,6 +12,7 @@ import { Link, useParams } from "react-router-dom";
 import { db } from "../../firebase";
 import { fetchUserData } from "../../services/getUserData";
 import { fetchUserPosts } from "../../services/postsFetch";
+import { getImageFallbackURL } from "../../utils";
 import Navbar from "../Navbar/Navbar";
 import Post from "../Post/Post";
 import Loading from "../ResuableComponents/Loading/Loading";
@@ -69,15 +70,19 @@ export default function UserProfile() {
         <Navbar />
         <UserProfileDisplay
           name="UWU"
-          imageURL={posts.length ? posts[0].posterProfilePicURL : ""}
+          imageURL={
+            posts.length ? posts[0].posterProfilePicURL : getImageFallbackURL()
+          }
         />
-        {posts.map((post) => (
-          <Post
-            {...post}
-            profileName={post.authorFullName}
-            profilePicUrl={post.posterProfilePicURL}
-          />
-        ))}
+        <div className="posts m-auto">
+          {posts.map((post) => (
+            <Post
+              {...post}
+              profileName={post.authorFullName}
+              profilePicUrl={post.posterProfilePicURL}
+            />
+          ))}
+        </div>
       </>
     );
   } else if (userData === null) {

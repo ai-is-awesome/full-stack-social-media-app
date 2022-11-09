@@ -9,7 +9,6 @@ body {
 
 .home_container {
   display: flex;
-
   justify-content: space-between;
 
   .sun_svg {
@@ -19,12 +18,16 @@ body {
   }
 
   > * {
-    margin-right: 2rem;
+    margin-right: 0rem;
   }
 
   @include m.small {
     display: flex;
     flex-direction: column;
+    > * {
+      width: 80vw !important;
+      margin-bottom: 2rem;
+    }
   }
 }
 
@@ -32,3 +35,9 @@ body {
   flex-basis: 30vw;
   width: 40vw;
 }
+
+// @include m.small {
+//   .posts {
+//     width: 80vw;
+//   }
+// }
