@@ -22,12 +22,6 @@
       margin-left: 1rem;
       background-color: transparent;
       width: 90%;
-      font-size: 1rem;
-      border: none;
-      &:focus {
-        border: none;
-        outline: none;
-      }
     }
   }
 
@@ -81,16 +75,6 @@
   }
 
   .login_or_signup_btn {
-    border: none;
-    background-color: white;
-    padding: 0.8rem 1rem;
-    border-radius: 2rem;
-    cursor: pointer;
-    font-size: 1rem;
-    border: 1px solid v.$primary-color-1;
-
-    background-color: v.$primary-color-1;
-    color: white;
   }
   .logout-btn {
     border: none;

@@ -9,6 +9,7 @@ import { AuthContext } from "./context/AuthContext";
 import SunSVG from "./components/ResuableComponents/SunSVG";
 import { postsFetch } from "./services/postsFetch";
 import ActiveUsers from "./components/ActiveUsers/ActiveUsers";
+import CreatePost from "./components/CreatePost/CreatePost";
 
 // import { ThemeContext, ThemeProvider } from "./context/ThemeContext";
 
@@ -36,16 +37,19 @@ export default function App() {
           <SunSVG />
         </div> */}
           <Sidebar />
-          <div className="posts">
-            {posts.map((post) => (
-              <Post
-                imageUrl={post.imageUrl}
-                title={post.title}
-                profileName={post?.authorFullName}
-                profilePicUrl={post?.posterProfilePicURL}
-                userRef={post?.userRef}
-              />
-            ))}
+          <div className="middle-section">
+            <CreatePost />
+            <div className="posts">
+              {posts.map((post) => (
+                <Post
+                  imageUrl={post.imageUrl}
+                  title={post.title}
+                  profileName={post?.authorFullName}
+                  profilePicUrl={post?.posterProfilePicURL}
+                  userRef={post?.userRef}
+                />
+              ))}
+            </div>
           </div>
           <ActiveUsers />
         </div>

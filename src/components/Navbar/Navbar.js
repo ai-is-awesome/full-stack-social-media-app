@@ -27,11 +27,12 @@ export default function Navbar() {
           <input
             type={"search"}
             placeholder="Search for different posts and people!"
+            className="text-input"
           />
         </div>
         {!user ? (
           <button
-            className="login_or_signup_btn"
+            className="primary_btn"
             onClick={() => setShowLoginModal(!showLoginModal)}
           >
             Login / Signup

@@ -6,11 +6,16 @@ import LoginContainer from "../Login/LoginContainer";
 import { AuthContext } from "../../context/AuthContext";
 
 export default function AuthModal(props) {
+  // Props are
+  // 1. onClose > function
+  // 2. showModal > boolean
+  // 3. messageJsx > String > A personal message to display on the auth modal
   const [activeAuth, setActiveAuth] = useState("login");
   const { authError } = useContext(AuthContext);
   return (
     <Modal {...props}>
       <div className={`auth_modal_container`}>
+        {props.messageJsx}
         <div className="auth_tab_btn_container">
           <button
             className={activeAuth === "signup" ? "active" : ""}
@@ -32,7 +37,7 @@ export default function AuthModal(props) {
           <LoginContainer onAuthSuccess={props.onAuthSuccess} />
         )}
         {authError.length !== 0 && (
-          <div className="auth_error_message">{authError}</div>
+          <div className="error-message">{authError}</div>
         )}
       </div>
     </Modal>

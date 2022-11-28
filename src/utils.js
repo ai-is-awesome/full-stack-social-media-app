@@ -7,6 +7,20 @@ export const getUserProfilePageURL = (uid) => {
   return `/profile/${uid}`;
 };
 
+export const getFileExtensionFromFileName = (fileName) => {
+  const arr = fileName.split(".");
+  return arr.length !== 1 ? arr[arr.length - 1] : null;
+};
+
+export const validateFileExtension = (fileObject) => {
+  const fileName = fileObject.name;
+  const extension = getFileExtensionFromFileName(fileName);
+  if (extension === "jpeg" || extension === "jpg" || extension === "png") {
+    return true;
+  }
+  return false;
+};
+
 // Get top N values from an object
 export const getTopValues = (obj, topN) => {
   var sortedEntries = Object.entries(obj).sort(function (a, b) {

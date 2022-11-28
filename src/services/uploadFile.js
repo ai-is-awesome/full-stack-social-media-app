@@ -5,6 +5,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { storage } from "../firebase";
+import { getFileExtensionFromFileName, validateFileExtension } from "../utils";
 
 const storageFolder = "imagePosts";
 
@@ -13,7 +14,14 @@ const uploadFile = (file) => {
     if (!file) {
       reject("No file Found");
     }
+
     const fileName = file.name;
+
+    const isFileValid = validateFileExtension(file);
+
+    if (!isFileValid) {
+      reject("File format is incorrect. File should be jpeg, jpg or png");
+    }
     const storageRef = ref(storage, `${storageFolder}/${fileName}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
     uploadTask.on("state_changed", {

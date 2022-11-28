@@ -4,6 +4,10 @@ body {
   background-color: v.$gray-100;
 }
 
+// ::-webkit-file-upload-button {
+//   display: none;
+// }
+
 a {
   text-decoration: none;
 
@@ -19,6 +23,10 @@ a {
   }
 }
 
+button:disabled {
+  cursor: alias;
+}
+
 .container {
   width: 80%;
   margin: auto;
@@ -26,6 +34,39 @@ a {
 
 .m-auto {
   margin: auto;
+}
+
+.primary_btn {
+  border: none;
+  background-color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border: 1px solid v.$primary-color-1;
+
+  background-color: v.$primary-color-1;
+  color: white;
+}
+
+.text-input {
+  font-size: 1rem;
+  border: none;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+.error-message {
+  padding: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  border-radius: 1.4rem;
+  width: 50%;
+  background-color: v.$red-400;
+  color: white;
 }
 
 // a:visited {
