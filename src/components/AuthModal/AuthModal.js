@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 export default function AuthModal(props) {
   // Props are
   // 1. onClose > function
-  // 2. showModal > boolean
+  // 2. showModal > boolean. Shows  the modal IF showModal is True
   // 3. messageJsx > String > A personal message to display on the auth modal
   const [activeAuth, setActiveAuth] = useState("login");
   const { authError } = useContext(AuthContext);
@@ -37,7 +37,7 @@ export default function AuthModal(props) {
           <LoginContainer onAuthSuccess={props.onAuthSuccess} />
         )}
         {authError.length !== 0 && (
-          <div className="error-message">{authError}</div>
+          <div className="error-message auth_error_message">{authError}</div>
         )}
       </div>
     </Modal>

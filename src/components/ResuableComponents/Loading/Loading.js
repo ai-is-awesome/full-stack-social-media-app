@@ -1,6 +1,6 @@
 import React from "react";
-import style from "./Loading.scss";
+import "./Loading.scss";
 
-export default function Loading() {
-  return <div className={`${style.loading} ${style.secondClass}`}>Loading</div>;
+export default function Loading({ inline }) {
+  return <div className={"loading " + inline ? "inline" : ""}>Loading</div>;
 }

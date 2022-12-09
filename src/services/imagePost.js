@@ -3,22 +3,20 @@ import { useEffect } from "react";
 import { db } from "../firebase";
 
 export const createImagePost = (postObject, uid) => {
+  // Values that postObject is expected when called
+
+  // const postObject = {
+  //   imageUrl: downloadURL,
+  //   title: value,
+  // posterProfilePicURL
+  // authorFullName
+
   return new Promise(async (resolve, reject) => {
     const postType = "imagePost";
     const postUploadTime = Timestamp.fromDate(new Date());
     const numLikes = 0;
     const userRef = doc(db, "users", uid);
 
-    //   const postObject = {
-    //     postType,
-    //     imageUrl,
-    //     numLikes,
-    //     timeCreated: postUploadTime,
-    //     title: postTitle,
-    //     userRef,
-    //     posterName: posterName,
-    //     posterProfileURL: posterProfilePicURL,
-    //   };
     const completePostObject = {
       postType,
       numLikes,
@@ -28,9 +26,8 @@ export const createImagePost = (postObject, uid) => {
     };
     console.log("download url from inside image post", completePostObject);
 
-    if (!completePostObject.imageUrl) {
-      console.log("oops cnat fidn img");
-      return;
+    if (!completePostObject.imageUrl || !uid) {
+      reject("Something went wrong. Try again!");
     }
 
     const docRef = await addDoc(collection(db, "posts"), completePostObject);

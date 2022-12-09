@@ -4,6 +4,9 @@ import useTextInput from "../../hooks/useTextInput";
 import uploadFile from "../../services/uploadFile";
 import { AuthContext } from "../../context/AuthContext";
 import AuthModal from "../AuthModal/AuthModal";
+import { createImagePost } from "../../services/imagePost";
+import Loading from "../ResuableComponents/Loading/Loading";
+import { UserContext } from "../../context/UserContext";
 
 const CreatePost = () => {
   const { value, onChange } = useTextInput("");
@@ -12,6 +15,7 @@ const CreatePost = () => {
   const [showModal, setShowModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const { user } = useContext(AuthContext);
+  const { userData } = useContext(UserContext);
   const authModalMessage = "Please";
   const authMessageJsx = (
     <p
@@ -29,7 +33,7 @@ const CreatePost = () => {
     </p>
   );
 
-  console.log("user from creaet post is ; " + user);
+  console.log("USERDATA", userData);
 
   const fileOnChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -45,7 +49,18 @@ const CreatePost = () => {
     }
     setIsLoading(true);
     uploadFile(selectedFile)
-      .then(() => {})
+      .then((imageUrl) => {
+        const postObject = {
+          imageUrl,
+          title: value,
+          posterProfilePicURL: userData.profilePicURL,
+          authorFullName: userData.fullName,
+        };
+        createImagePost(postObject, user.uid).then(() => {
+          console.log("Post uploaded successfully!");
+          window.location.reload();
+        });
+      })
       .catch((e) => setErrorMessage(e))
       .finally(() => {
         setIsLoading(false);
@@ -60,47 +75,54 @@ const CreatePost = () => {
     );
 
   return (
-    <div
-      className="createpost_container"
-      onClick={() => {
-        if (user === null) {
+    <>
+      <div
+        className="createpost_container"
+        onClick={() => {
           console.log("hello from onclick");
-          setShowModal(true);
-        }
-      }}
-    >
+          if (user === null) {
+            console.log("Setting modal state to true");
+            setShowModal(true);
+          }
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Write an interesting title"
+          className="text-input"
+          onChange={(e) => onChange(e)}
+        />
+        <input
+          type="file"
+          name="uploadfile"
+          id="img"
+          style={{ display: "none" }}
+          disabled={user === null}
+          onChange={fileOnChange}
+          accept=".png, .jpg, .jpeg"
+        />
+        <label htmlFor="img" id="select_file_label">
+          {selectedFile ? selectedFile.name : "Please select a file"}
+        </label>
+        <button
+          className="primary_btn"
+          onClick={formSubmitHandler}
+          disabled={user === null}
+        >
+          Create Post
+        </button>
+        {isLoading && <Loading inline={true} />}
+        {errorMessageDiv}
+      </div>
       <AuthModal
         showModal={showModal}
-        onClose={() => setShowModal(false)}
+        onClose={() => {
+          setShowModal(false);
+          console.log("ON CLOSE REACHED");
+        }}
         messageJsx={authMessageJsx}
       />
-      <input
-        type="text"
-        placeholder="Write an interesting title"
-        className="text-input"
-        onChange={(e) => onChange(e)}
-      />
-      <input
-        type="file"
-        name="uploadfile"
-        id="img"
-        style={{ display: "none" }}
-        disabled={user === null}
-        onChange={fileOnChange}
-        accept=".png, .jpg, .jpeg"
-      />
-      <label htmlFor="img" id="select_file_label">
-        {selectedFile ? selectedFile.name : "Please select a file"}
-      </label>
-      <button
-        className="primary_btn"
-        onClick={formSubmitHandler}
-        disabled={user === null}
-      >
-        Create Post
-      </button>
-      {errorMessageDiv}
-    </div>
+    </>
   );
 };
 
