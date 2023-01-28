@@ -16,7 +16,6 @@ const CreatePost = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const { user } = useContext(AuthContext);
   const { userData } = useContext(UserContext);
-  const authModalMessage = "Please";
   const authMessageJsx = (
     <p
       style={{
@@ -28,12 +27,10 @@ const CreatePost = () => {
         opacity: ".8",
       }}
     >
-      <span style={{ color: "pink" }}>Signup</span> to immediately start posting
+      <span className="primary_clr">Signup</span> to immediately start posting
       content!
     </p>
   );
-
-  console.log("USERDATA", userData);
 
   const fileOnChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -86,33 +83,40 @@ const CreatePost = () => {
           }
         }}
       >
-        <input
-          type="text"
-          placeholder="Write an interesting title"
-          className="text-input"
-          onChange={(e) => onChange(e)}
-        />
-        <input
-          type="file"
-          name="uploadfile"
-          id="img"
-          style={{ display: "none" }}
-          disabled={user === null}
-          onChange={fileOnChange}
-          accept=".png, .jpg, .jpeg"
-        />
-        <label htmlFor="img" id="select_file_label">
-          {selectedFile ? selectedFile.name : "Please select a file"}
-        </label>
-        <button
-          className="primary_btn"
-          onClick={formSubmitHandler}
-          disabled={user === null}
-        >
-          Create Post
-        </button>
-        {isLoading && <Loading inline={true} />}
-        {errorMessageDiv}
+        <div className="text_container">
+          <div className="user_profile_pic_container">
+            <img src="https://firebasestorage.googleapis.com/v0/b/socialmediaapp-59ba2.appspot.com/o/imagePosts%2Fprofile-3.jpg?alt=media&token=3bc8da92-c88e-46a5-b222-500f19f025fa" />
+          </div>
+          <input
+            type="text"
+            placeholder="Write an interesting title"
+            className="text-input"
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div className="bottom_container">
+          <input
+            type="file"
+            name="uploadfile"
+            id="img"
+            style={{ display: "none" }}
+            disabled={user === null}
+            onChange={fileOnChange}
+            accept=".png, .jpg, .jpeg"
+          />
+          <label htmlFor="img" id="select_file_label">
+            {selectedFile ? selectedFile.name : "Please select a file"}
+          </label>
+          <button
+            className="primary_btn"
+            onClick={formSubmitHandler}
+            disabled={user === null}
+          >
+            Create Post
+          </button>
+          {isLoading && <Loading inline={true} />}
+          {errorMessageDiv}
+        </div>
       </div>
       <AuthModal
         showModal={showModal}

@@ -1,9 +1,9 @@
 @use "../../scss_styles/abstracts/variables" as v;
 
 .navbar_container {
-  background-color: white;
+  background-color: v.$primary-color-1;
   .container {
-    padding: 0.5rem 2rem;
+    padding: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,7 +26,6 @@
   }
 
   .profile-icon-container {
-    background-color: white;
     border: none;
 
     svg {
@@ -47,8 +46,8 @@
       margin-right: 1rem;
 
       &:hover {
-        opacity: 0.8;
-        background-color: #000;
+        opacity: 0.9;
+
         // overflow: hidden;
         width: 50px;
         height: 50px;
@@ -74,7 +73,11 @@
     font-family: "Barlow";
   }
 
-  .login_or_signup_btn {
+  .nav_login_btn {
+    background-color: white;
+    color: black;
+    font-size: large;
+    font-weight: bold;
   }
   .logout-btn {
     border: none;

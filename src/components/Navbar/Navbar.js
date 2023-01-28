@@ -15,6 +15,15 @@ export default function Navbar() {
   const [profileModal, setProfileModal] = useState(false);
   const { userData } = useContext(UserContext);
 
+  const logoutJSX = (
+    <button
+      className={user ? "primary_btn" : "primary_btn nav_login_btn"}
+      onClick={() => setShowLoginModal(!showLoginModal)}
+    >
+      Login / Signup
+    </button>
+  );
+
   return (
     <nav className="navbar_container">
       <div className="container">
@@ -31,12 +40,7 @@ export default function Navbar() {
           />
         </div>
         {!user ? (
-          <button
-            className="primary_btn"
-            onClick={() => setShowLoginModal(!showLoginModal)}
-          >
-            Login / Signup
-          </button>
+          logoutJSX
         ) : (
           <>
             <div
@@ -44,20 +48,17 @@ export default function Navbar() {
               className="profile-icon-container"
             >
               <div style={{ display: "flex", alignItems: "center" }}>
-                <p style={{ marginRight: "1rem" }} className="welcome-text">
-                  Create Post
-                </p>
-                {userData?.profilePicURL ? (
-                  <div className="user_profile_pic_container">
-                    <img src={userData.profilePicURL} alt="user profile" />
-                  </div>
-                ) : (
-                  <div className="user_profile_pic_container">
-                    <img src={getImageFallbackURL()} alt="user profile" />
-                  </div>
-                )}
+                <div className="user_profile_pic_container">
+                  <img
+                    src={
+                      userData?.profilePicURL
+                        ? userData.profilePicURL
+                        : getImageFallbackURL()
+                    }
+                    alt="user profile"
+                  />
+                </div>
               </div>
-
               {profileModal && (
                 <>
                   <button onClick={() => logout()} className="logout-btn">

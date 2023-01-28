@@ -1,21 +1,38 @@
 @use "../../scss_styles/abstracts/variables" as v;
+@use "../../scss_styles/abstracts/mixins" as m;
 
 .createpost_container {
   background-color: white;
-  margin-bottom: 2rem;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   background-color: white;
   border-radius: 1rem;
+
+  .text_container {
+    display: flex;
+    align-items: center;
+
+    :nth-child(1) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .bottom_container {
+    display: flex;
+    justify-content: space-between;
+  }
+
   > * {
     margin-bottom: 1.8rem;
   }
 
   input[type="text"] {
-    padding: 1rem 1rem;
-    border-radius: 1rem;
-    background-color: white;
+    padding: 0.5rem 1rem;
+    background-color: #f0f2f5;
+    border-radius: 2rem;
+    width: 100%;
   }
 
   .primary_btn {
@@ -29,14 +46,5 @@
   }
 
   #select_file_label {
-    border: dotted 2px black;
-    background-color: white;
-    padding: 3rem 1rem;
-    font-size: 1rem;
-    color: darkgray;
-    border-radius: 1rem;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center;
   }
 }

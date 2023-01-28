@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./reset.css";
 import "./App.scss";
-
 import Navbar from "./components/Navbar/Navbar";
 import Post from "./components/Post/Post";
 import Sidebar from "./components/Sidebar/Sidebar";
