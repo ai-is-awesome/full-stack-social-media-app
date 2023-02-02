@@ -48,3 +48,9 @@
   #select_file_label {
   }
 }
+
+@include m.small {
+  .createpost_container {
+    max-width: 80vw;
+  }
+}

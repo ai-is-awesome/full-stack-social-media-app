@@ -9,6 +9,7 @@ import SunSVG from "./components/ResuableComponents/SunSVG";
 import { postsFetch } from "./services/postsFetch";
 import ActiveUsers from "./components/ActiveUsers/ActiveUsers";
 import CreatePost from "./components/CreatePost/CreatePost";
+import PostList from "./components/PostList/PostList";
 
 // import { ThemeContext, ThemeProvider } from "./context/ThemeContext";
 
@@ -38,17 +39,7 @@ export default function App() {
           <Sidebar />
           <div className="middle-section">
             <CreatePost />
-            <div className="posts">
-              {posts.map((post) => (
-                <Post
-                  imageUrl={post.imageUrl}
-                  title={post.title}
-                  profileName={post?.authorFullName}
-                  profilePicUrl={post?.posterProfilePicURL}
-                  userRef={post?.userRef}
-                />
-              ))}
-            </div>
+            <PostList posts={posts} />
           </div>
           <ActiveUsers />
         </div>
