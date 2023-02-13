@@ -82,6 +82,12 @@ button:disabled {
   img {
     @include m.rounded_image;
   }
+
+  svg {
+    @include m.rounded_image(35px);
+    color: v.$primary-color-1;
+    background-color: white;
+  }
 }
 
 // a:visited {

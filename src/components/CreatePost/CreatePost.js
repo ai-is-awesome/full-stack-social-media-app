@@ -1,5 +1,6 @@
-import "./CreatePost.scss";
 import React, { useContext, useState } from "react";
+import { FaUserCircle } from "react-icons/fa";
+import "./CreatePost.scss";
 import useTextInput from "../../hooks/useTextInput";
 import uploadFile from "../../services/uploadFile";
 import { AuthContext } from "../../context/AuthContext";
@@ -85,8 +86,16 @@ const CreatePost = () => {
       >
         <div className="text_container">
           <div className="user_profile_pic_container">
-            <img src="https://firebasestorage.googleapis.com/v0/b/socialmediaapp-59ba2.appspot.com/o/imagePosts%2Fprofile-3.jpg?alt=media&token=3bc8da92-c88e-46a5-b222-500f19f025fa" />
+            {user ? (
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/socialmediaapp-59ba2.appspot.com/o/imagePosts%2Fprofile-3.jpg?alt=media&token=3bc8da92-c88e-46a5-b222-500f19f025fa"
+                alt="profile"
+              />
+            ) : (
+              <FaUserCircle />
+            )}
           </div>
+
           <input
             type="text"
             placeholder="Write an interesting title"
